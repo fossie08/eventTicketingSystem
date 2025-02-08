@@ -1,0 +1,21 @@
+{% extends "user/base.html" %}
+{% block title %}Purchase Ticket{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-md p-6">
+  <h1 class="text-3xl font-bold mb-4">Purchase Ticket for {{ event.name }}</h1>
+  <form action="{{ url_for('purchase_ticket', event_id=event.id) }}" method="post">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">
+        Number of Tickets
+      </label>
+      <input id="quantity" name="quantity" type="number" min="1" value="1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div>
+      <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        Purchase
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

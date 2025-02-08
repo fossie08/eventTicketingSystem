@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Manage Users</h1>
+<div class="bg-white p-6 rounded-lg shadow-lg overflow-x-auto">
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b">Username</th>
+        <th class="py-2 px-4 border-b">Email</th>
+        <th class="py-2 px-4 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td class="py-2 px-4 border-b">{{ user.username }}</td>
+        <td class="py-2 px-4 border-b">{{ user.email }}</td>
+        <td class="py-2 px-4 border-b">
+          <a href="{{ url_for('edit_user', user_id=loop.index0) }}" class="text-blue-500 hover:underline">Edit</a>
+          |
+          <a href="{{ url_for('delete_user', user_id=loop.index0) }}" class="text-red-500 hover:underline">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

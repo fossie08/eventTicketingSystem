@@ -1,0 +1,109 @@
+{% extends "admin/base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- Card: Total Events -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex items-center">
+      <div class="p-3 bg-blue-500 rounded-full">
+        <i class="fas fa-ticket-alt text-white"></i>
+      </div>
+      <div class="ml-4">
+        <h4 class="text-2xl font-semibold">{{ total_events }}</h4>
+        <p class="text-gray-600">Total Events</p>
+      </div>
+    </div>
+  </div>
+  <!-- Card: Total Users -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex items-center">
+      <div class="p-3 bg-green-500 rounded-full">
+        <i class="fas fa-users text-white"></i>
+      </div>
+      <div class="ml-4">
+        <h4 class="text-2xl font-semibold">{{ total_users }}</h4>
+        <p class="text-gray-600">Total Users</p>
+      </div>
+    </div>
+  </div>
+  <!-- Card: Event Attendance -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex items-center">
+      <div class="p-3 bg-yellow-500 rounded-full">
+        <i class="fas fa-chart-line text-white"></i>
+      </div>
+      <div class="ml-4">
+        <h4 class="text-2xl font-semibold">{{ event_attendance }}</h4>
+        <p class="text-gray-600">Event Attendance</p>
+      </div>
+    </div>
+  </div>
+  <!-- Card: Revenue -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex items-center">
+      <div class="p-3 bg-red-500 rounded-full">
+        <i class="fas fa-dollar-sign text-white"></i>
+      </div>
+      <div class="ml-4">
+        <h4 class="text-2xl font-semibold">${{ total_revenue }}</h4>
+        <p class="text-gray-600">Revenue</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Events Section -->
+<div class="mt-10">
+  <h2 class="text-2xl font-semibold mb-4">Recent Events</h2>
+  <div class="bg-white p-6 rounded-lg shadow-lg overflow-x-auto">
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">Event Name</th>
+          <th class="py-2 px-4 border-b">Date</th>
+          <th class="py-2 px-4 border-b">Location</th>
+          <th class="py-2 px-4 border-b">Tickets Sold</th>
+          <th class="py-2 px-4 border-b">Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in recent_events %}
+        <tr>
+          <td class="py-2 px-4 border-b">{{ event.name }}</td>
+          <td class="py-2 px-4 border-b">{{ event.date }}</td>
+          <td class="py-2 px-4 border-b">{{ event.location }}</td>
+          <td class="py-2 px-4 border-b">{{ event.tickets_sold }}</td>
+          <td class="py-2 px-4 border-b">${{ event.revenue }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- User Activity Section -->
+<div class="mt-10">
+  <h2 class="text-2xl font-semibold mb-4">User Activity</h2>
+  <div class="bg-white p-6 rounded-lg shadow-lg overflow-x-auto">
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">User</th>
+          <th class="py-2 px-4 border-b">Activity</th>
+          <th class="py-2 px-4 border-b">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for activity in user_activities %}
+        <tr>
+          <td class="py-2 px-4 border-b">{{ activity.user }}</td>
+          <td class="py-2 px-4 border-b">{{ activity.activity }}</td>
+          <td class="py-2 px-4 border-b">{{ activity.date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

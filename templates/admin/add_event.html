@@ -1,0 +1,18 @@
+<!-- templates/admin/add_event.html -->
+{% extends "admin/base.html" %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Add Event</h1>
+<form method="POST" action="{{ url_for('add_event') }}">
+    <label class="block mb-2">Event Name:</label>
+    <input type="text" name="name" required class="w-full p-2 border rounded mb-3">
+    
+    <label class="block mb-2">Date:</label>
+    <input type="date" name="date" required class="w-full p-2 border rounded mb-3">
+    
+    <label class="block mb-2">Description:</label>
+    <textarea name="description" required class="w-full p-2 border rounded mb-3"></textarea>
+    
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Add Event</button>
+</form>
+{% endblock %}

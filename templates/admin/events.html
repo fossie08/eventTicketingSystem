@@ -1,0 +1,41 @@
+{% extends "admin/base.html" %}
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Manage Events</h1>
+<div class="mb-4">
+  <a href="{{ url_for('add_event') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Add New Event
+  </a>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg overflow-x-auto">
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b">Event Name</th>
+        <th class="py-2 px-4 border-b">Date</th>
+        <th class="py-2 px-4 border-b">Location</th>
+        <th class="py-2 px-4 border-b">Tickets Sold</th>
+        <th class="py-2 px-4 border-b">Revenue</th>
+        <th class="py-2 px-4 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      <tr>
+        <td class="py-2 px-4 border-b">{{ event.name }}</td>
+        <td class="py-2 px-4 border-b">{{ event.date }}</td>
+        <td class="py-2 px-4 border-b">{{ event.location }}</td>
+        <td class="py-2 px-4 border-b">{{ event.tickets_sold }}</td>
+        <td class="py-2 px-4 border-b">${{ event.revenue }}</td>
+        <td class="py-2 px-4 border-b">
+          <a href="{{ url_for('edit_event', event_id=loop.index0) }}" class="text-blue-500 hover:underline">Edit</a>
+          |
+          <a href="{{ url_for('delete_event', event_id=loop.index0) }}" class="text-red-500 hover:underline">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

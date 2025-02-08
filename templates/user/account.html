@@ -1,0 +1,14 @@
+{% extends "user/base.html" %}
+{% block title %}Account{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold mb-4 text-center">My Account</h2>
+  <p class="mb-2"><strong>Username:</strong> {{ current_user.username }}</p>
+  <p class="mb-2"><strong>Email:</strong> {{ current_user.email }}</p>
+  <!-- Additional account info and actions can be added here -->
+  <a href="{{ url_for('edit_account') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Edit Account
+  </a>
+</div>
+{% endblock %}

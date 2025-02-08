@@ -1,0 +1,18 @@
+<!-- templates/admin/edit_event.html -->
+{% extends "admin/base.html" %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Edit Event</h1>
+<form method="POST" action="{{ url_for('edit_event', event_id=event.id) }}">
+    <label class="block mb-2">Event Name:</label>
+    <input type="text" name="name" value="{{ event.name }}" required class="w-full p-2 border rounded mb-3">
+    
+    <label class="block mb-2">Date:</label>
+    <input type="date" name="date" value="{{ event.date }}" required class="w-full p-2 border rounded mb-3">
+    
+    <label class="block mb-2">Description:</label>
+    <textarea name="description" required class="w-full p-2 border rounded mb-3">{{ event.description }}</textarea>
+    
+    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded">Save Changes</button>
+</form>
+{% endblock %}

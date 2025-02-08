@@ -1,0 +1,15 @@
+{% extends "user/base.html" %}
+{% block title %}Event Details{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-md p-6">
+  <h1 class="text-3xl font-bold mb-4">{{ event.name }}</h1>
+  <p class="text-gray-600 mb-2"><strong>Date:</strong> {{ event.date }}</p>
+  <p class="text-gray-600 mb-2"><strong>Location:</strong> {{ event.location }}</p>
+  <p class="text-gray-800 mb-4"><strong>Tickets Sold:</strong> {{ event.tickets_sold }}</p>
+  <p class="text-gray-800 mb-4"><strong>Revenue:</strong> ${{ event.revenue }}</p>
+  <a href="{{ url_for('purchase_ticket', event_id=event.id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+    Purchase Ticket
+  </a>
+</div>
+{% endblock %}
